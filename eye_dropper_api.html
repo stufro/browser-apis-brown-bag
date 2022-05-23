@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <button id="btn">Pick a Colour</button>
+    <p id="hex"></p>
+    <div id="colour" style="width: 50px; height: 50px"></div>
+  </body>
+
+  <script>
+    let button = document.getElementById("btn")
+
+    button.addEventListener("click", () => {
+      const dropper = new EyeDropper()
+
+      dropper.open()
+        .then(result => {
+          document.getElementById("hex").textContent = result.sRGBHex
+          document.getElementById("colour").style.backgroundColor = result.sRGBHex
+        })
+    })
+  </script>
+</html>
