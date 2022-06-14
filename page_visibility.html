@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Visible page</title>
+  </head>
+
+  <body>
+    <h1>Page Visibility</h1>
+  </body>
+
+  <script>
+    document.addEventListener("visibilitychange", () => {
+      if(document["hidden"]) {
+        document.title = "Page is not visible"
+      } else {
+        document.title = "Visible page"
+      }
+    })
+  </script>
+</html>
