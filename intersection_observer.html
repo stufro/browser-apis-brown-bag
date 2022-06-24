@@ -1,15 +1,19 @@
 <html>
   <body>
-    <div style="background-color: cyan; width: 80vw; height: 100vh; margin: 3rem;" id="item-1">
+    <div style="background-color: cyan; width: 80vw; height: 90vh; margin: 3rem;" id="item-1">
       <h1>Item 1</h1>
     </div>
 
-    <div style="background-color: pink; width: 80vw; height: 100vh; margin: 3rem;" id="item-2">
+    <div style="background-color: pink; width: 80vw; height: 90vh; margin: 3rem;" id="item-2">
       <h1>Item 2</h1>
     </div>
 
-    <div style="background-color: green; width: 80vw; height: 100vh; margin: 3rem;" id="item-3">
+    <div style="background-color: green; width: 80vw; height: 90vh; margin: 3rem;" id="item-3">
       <h1>Item 3</h1>
+    </div>
+
+    <div style="background-color: red; width: 80vw; height: 90vh; margin: 3rem;" id="item-4">
+      <h1>Item 4</h1>
     </div>
   </body>
 
@@ -21,6 +25,7 @@
     }
 
     let callback = (entries, observer) => {
+      console.log(entries.length)
       entries.forEach((entry) => {
         if(entry.isIntersecting) {
           entry.target.style.backgroundColor = "yellow"
@@ -34,3 +39,39 @@
     observer.observe(document.getElementById('item-2'))
   </script>
 </html>
+
+<!--
+Provides a way to observe changes in the visibility of a target element within
+the viewport, or it's visibility within another scrollable element
+
+You to configure a callback function that is when either:
+  - The target element intersects with the viewport or specified element
+  - The first time the observer is initialised
+
+CODE: Create HTML, set scene of changing middle boxes colour
+CODE: Create intersection observer
+
+
+Options:
+  - root: the element that is used as the viewport for checking the visibility,
+          if we want to check it's visibility within the viewport of the document leave it as null
+  - rootMargin: Either set a single value or a value each for top, right, bottom, left.
+                It will grow or shrink each side of the element's bounding box before working out if
+                it is intersecting.
+  - threshold: Again, either a single number of an array of numbers which define what percentage of the
+               element will be visible before the callback is triggered.
+
+CODE: Write callback function
+
+Callback function:
+Whenever the target meets a threshold specified, the callback is invoked and it receives a list of entry objects
+and the observer. There will be an entry for each target which reported a change in its intersection status.
+
+Tweak options and demo
+
+---
+Why is there entries array just with one thing in it?
+
+An array of IntersectionObserverEntry objects, each representing one threshold which was crossed,
+either becoming more or less visible than the percentage specified by that threshold.
+-->
