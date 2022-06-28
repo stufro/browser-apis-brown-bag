@@ -6,7 +6,7 @@
   <body>
     <h1>Page Visibility</h1>
 
-    <video id="videoElement" controls="" poster="thumbnail.jpg">
+    <video id="videoElement" controls="">
       <source src="https://s3-ap-northeast-1.amazonaws.com/daniemon/demos/The%2BVillage-Mobile.mp4" type="video/mp4" media="all and (max-width:680px)"> 
     </video>
   </body>
@@ -27,18 +27,18 @@
 </html>
 
 <!--
-  This was released in Chrome version 33 so has been around since 2014 and the name suggests, it provides
-  events you can watch for to know when a document becomes visible or hidden. Historically, there were other ways
-  to do this that were far from perfect for example listening for onblur and onfocus events of the document, but this
-  doesn't account for when the document is visible on screen, but another window is active.
+This was released in Chrome version 33 so has been around since 2014 and as the name suggests, it provides
+events you can watch for to know when a document becomes visible or hidden. Historically, there were other ways
+to do this that were far from perfect for example listening for onblur and onfocus events of the document, but this
+doesn't account for when the document is visible on screen, but another window is active.
 
-  When the user minimizes the window or switches to another tab, the API sends a visbilitychange event with
-  the new state.
+When the user minimizes the window or switches to another tab, the API sends a visbilitychange event with
+the new state.
 
-  CODE: demo  
+CODE: demo  
 
-  Other use cases:
-  - A site has an image carousel that shouldn't advance to the next slide unless the user is viewing the page
-  - An application showing a dashboard of information doesn't want to poll the server for updates when the page isn't visible
-  - A site wants to switch off sounds when a device is in standby mode (user pushes power button to turn screen off)
+Other use cases:
+- A site has an image carousel that shouldn't advance to the next slide unless the user is viewing the page
+- An application showing a dashboard of information doesn't want to poll the server for updates when the page isn't visible
+- A site wants to switch off sounds when a device is in standby mode (user pushes power button to turn screen off)
 -->

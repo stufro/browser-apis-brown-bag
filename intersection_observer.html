@@ -27,6 +27,7 @@
     let callback = (entries, observer) => {
       console.log(entries.length)
       entries.forEach((entry) => {
+        debugger
         if(entry.isIntersecting) {
           entry.target.style.backgroundColor = "yellow"
         } else {
@@ -42,7 +43,7 @@
 
 <!--
 Provides a way to observe changes in the visibility of a target element within
-the viewport, or it's visibility within another scrollable element
+the viewport, or it's visibility within another scrollable element. Chrome 52 (2016), widely supported
 
 You to configure a callback function that is when either:
   - The target element intersects with the viewport or specified element
@@ -51,7 +52,6 @@ You to configure a callback function that is when either:
 CODE: Create HTML, set scene of changing middle boxes colour
 CODE: Create intersection observer
 
-
 Options:
   - root: the element that is used as the viewport for checking the visibility,
           if we want to check it's visibility within the viewport of the document leave it as null
@@ -59,7 +59,7 @@ Options:
                 It will grow or shrink each side of the element's bounding box before working out if
                 it is intersecting.
   - threshold: Again, either a single number of an array of numbers which define what percentage of the
-               element will be visible before the callback is triggered.
+               element has to be visible for the callback to be triggered.
 
 CODE: Write callback function
 
@@ -67,11 +67,17 @@ Callback function:
 Whenever the target meets a threshold specified, the callback is invoked and it receives a list of entry objects
 and the observer. There will be an entry for each target which reported a change in its intersection status.
 
+Debugger and look at what each entry can tell us
+  - boundingClientRect: represents the bounds of the target element
+  - intersectionRect: represents the target elements visible area
+  - time: time at which the intersection was recorded, relative to when the observer was initialised
+
 Tweak options and demo
 
 Other use cases:
  - Lazy-loading of images or other content as a page is scrolled.
- - Implementing "infinite scrolling" web sites, where more and more content is loaded and rendered as you scroll, so that the user doesn't have to flip through pages.
+ - Implementing "infinite scrolling" web sites, where more and more content is loaded and rendered as you scroll,
+   so that the user doesn't have to flip through pages.
  - Reporting of visibility of advertisements in order to calculate ad revenues.
  - Deciding whether or not to perform tasks or animation processes based on whether or not the user will see the result.
 
